@@ -31,3 +31,10 @@
 
   @include nb-overrides();
 };
+
+body {
+  min-width: initial!important;
+}
+
+
+

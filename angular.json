@@ -157,6 +157,16 @@
             "typeCheck": true,
             "exclude": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "ngx-admin-demo:build:production",
+            "firebaseProject": "edenor-abc0c",
+            "firebaseHostingSite": "edenor"
+          }
         }
       }
     },

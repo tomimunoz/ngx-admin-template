@@ -1,4 +1,4 @@
-@import './themes';
+@import "./themes";
 
 @mixin nb-overrides() {
   nb-select.size-medium button {
@@ -7,5 +7,9 @@
     nb-icon {
       right: 0.41rem !important;
     }
+  }
+
+  body {
+    min-width: initial !important;
   }
 }

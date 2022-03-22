@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "edenor-abc0c"
+  },
+  "targets": {
+    "edenor-abc0c": {
+      "hosting": {
+        "ngx-admin-demo": [
+          "edenor"
+        ]
+      }
+    }
+  }
+}
