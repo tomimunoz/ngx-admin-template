@@ -8,6 +8,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { NbAuthModule } from '@nebular/auth';
 import { NbPasswordAuthStrategy } from '@nebular/auth';
+import { TablesModule } from './tables/tables.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { NbPasswordAuthStrategy } from '@nebular/auth';
     ThemeModule,
     NbMenuModule,
     DashboardModule,
-    MiscellaneousModule
+    MiscellaneousModule,
+    TablesModule
   ],
   declarations: [
     PagesComponent,
