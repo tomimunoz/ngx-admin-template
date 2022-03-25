@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TablesComponent } from './tables/tables.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { NbCheckboxModule } from '@nebular/theme';
 
 const components = [
   TablesComponent
@@ -15,6 +16,7 @@ const components = [
   imports: [
     CommonModule,
     MatTableModule,
+    NbCheckboxModule,
     MatCheckboxModule
   ],
   exports: [
