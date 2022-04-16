@@ -5,3 +5,8 @@ table {
 .mat-elevation-z8 {
     box-shadow: none;
 }
+
+.button-group {
+  display: flex;
+  gap: .5em;
+}

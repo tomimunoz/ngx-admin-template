@@ -11,6 +11,7 @@ import { NbThemeService } from '@nebular/theme';
 export class EchartsHorizontalBarComponent implements AfterViewInit, OnDestroy {
     options: any = {};
     themeSubscription: any;
+    chartInstance: any;
 
     constructor(private theme: NbThemeService) {
     }
@@ -151,6 +152,9 @@ export class EchartsHorizontalBarComponent implements AfterViewInit, OnDestroy {
             };
         });
     }
+
+
+    
 
     ngOnDestroy(): void {
         this.themeSubscription.unsubscribe();
