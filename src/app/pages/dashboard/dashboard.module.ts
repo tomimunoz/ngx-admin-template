@@ -17,6 +17,7 @@ import { DashboardComponent } from './dashboard.component';
 
 import { FormsModule } from '@angular/forms';
 import { ChartsModule } from '../charts/charts.module';
+import { TablesModule } from '../tables/tables.module';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { ChartsModule } from '../charts/charts.module';
     NbIconModule,
     NbButtonModule,
     NgxEchartsModule,
-    ChartsModule
+    ChartsModule,
+    TablesModule
   ],
   declarations: [
     DashboardComponent

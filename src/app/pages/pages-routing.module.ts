@@ -16,6 +16,11 @@ const routes: Routes = [{
       canActivate: [AuthGuard]
     },
     {
+      path: 'charts',
+      loadChildren: () => import('../pages/charts/charts.module')
+        .then(m => m.ChartsModule),
+    },
+    {
       path: 'iot-dashboard',
       component: DashboardComponent,
     },

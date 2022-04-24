@@ -37,4 +37,25 @@ body {
 }
 
 
+.mat-table {
+  background: none;
+}
+.mat-cell {
+  color: inherit;
+}
+.mat-header-cell {
+  color: inherit;
+}
 
+.mat-paginator{
+  background: none;
+  color: inherit
+}
+
+
+
+
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
