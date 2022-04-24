@@ -2,6 +2,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ApiService } from '../../../@core/api/api.service';
 
 export interface PeriodicElement {
   name: string;
@@ -30,18 +31,31 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class TablesComponent implements AfterViewInit{
 
-  displayedColumns: string[] = ['select', 'position', 'name', 'weight', 'symbol'];
-  dataSource: MatTableDataSource<PeriodicElement>;
-  selection = new SelectionModel<PeriodicElement>(true, []);
+  displayedColumns: string[] = ['post_id', 'post_url', 'status', 'seller_name', 'location_text'];
+  //displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  dataSource: MatTableDataSource<any>;
+  selection = new SelectionModel<any>(true, []);
+  loadData = false
+  data: any = []
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-  constructor() {
-    this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+  constructor(private api : ApiService) {
+    // this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+  }
+
+  ngOnInit() {
+    this.api.getPosts().subscribe( data => {
+      this.loadData = true
+      console.log(data)
+      this.data = data
+      this.dataSource = new MatTableDataSource(this.data);
+      this.dataSource.paginator = this.paginator
+    }) 
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator
   }
+
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
     const numSelected = this.selection.selected.length;

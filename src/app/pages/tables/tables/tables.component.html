@@ -1,4 +1,4 @@
-<table mat-table matTableExporter #exporter="matTableExporter" [dataSource]="dataSource" class="mat-elevation-z8">
+<table mat-table matTableExporter #exporter="matTableExporter" [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="loadData">
 
   <!-- Checkbox Column -->
   <ng-container matColumnDef="select">
@@ -15,28 +15,30 @@
     </td>
   </ng-container>
 
-  <!-- Position Column -->
-  <ng-container matColumnDef="position">
-    <th mat-header-cell *matHeaderCellDef> No. </th>
-    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+  <!-- post_id Column -->
+  <ng-container matColumnDef="post_id">
+    <th mat-header-cell *matHeaderCellDef> DOC ID </th>
+    <td mat-cell *matCellDef="let element"> {{element._source.post_id}} </td>
   </ng-container>
-
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> Name </th>
-    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  <!-- post_url Column -->
+  <ng-container matColumnDef="post_url">
+    <th mat-header-cell *matHeaderCellDef> Post url </th>
+    <td mat-cell *matCellDef="let element"> <a href="element._source.post_url">URL</a></td>
   </ng-container>
-
-  <!-- Weight Column -->
-  <ng-container matColumnDef="weight">
-    <th mat-header-cell *matHeaderCellDef> Weight </th>
-    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+  <!-- status Column -->
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef> Status Edenor </th>
+    <td mat-cell *matCellDef="let element"> {{element._source.status}} </td>
   </ng-container>
-
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="symbol">
-    <th mat-header-cell *matHeaderCellDef> Symbol </th>
-    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+  <!-- seller_name Column -->
+  <ng-container matColumnDef="seller_name">
+    <th mat-header-cell *matHeaderCellDef> Seller Name </th>
+    <td mat-cell *matCellDef="let element"> {{element._source.seller_name}} </td>
+  </ng-container>
+  <!-- location_text Column -->
+  <ng-container matColumnDef="location_text">
+    <th mat-header-cell *matHeaderCellDef> Localización </th>
+    <td mat-cell *matCellDef="let element"> {{element._source.location_text | titlecase}} </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -45,7 +47,7 @@
 
 </table>
 <mat-paginator [pageSize]="10" showFirstLastButtons></mat-paginator>
-<div class="button-group">
+<div class="button-group" *ngIf="loadData">
   <button nbButton hero status="info"
     (click)="exporter.exportTable('xlsx', {fileName:'test', sheet: 'sheet_name', Props: {Author: 'Edenor-Facts'}})">Excel</button>
   <button nbButton hero status="info" (click)="exporter.exportTable('csv', {fileName: 'test'})">CSV</button>
