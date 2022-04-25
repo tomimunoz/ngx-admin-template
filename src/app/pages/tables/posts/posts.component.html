@@ -1,0 +1,101 @@
+    
+
+<nb-card style="margin: 0;" *ngIf="loadData">
+    <nb-card-header style="margin: 0;">
+
+        <div class="button-group" *ngIf="loadData">
+            <button nbButton hero status="info"
+            (click)="exporter.exportTable('xlsx', {fileName:'test', sheet: 'sheet_name', Props: {Author: 'Edenor-Facts'}})">Excel</button>
+            <button nbButton hero status="info" (click)="exporter.exportTable('csv', {fileName: 'test'})">CSV</button>
+            <button nbButton hero status="info" (click)="exporter.exportTable('json', {fileName: 'test'})">Json</button>
+            <button nbButton hero status="info" (click)="exporter.exportTable('txt', {fileName: 'test'})">Txt</button>
+        </div>
+    </nb-card-header>
+    <nb-card-body style="padding: 0;">
+
+   
+<table mat-table matTableExporter #exporter="matTableExporter" [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+        <nb-checkbox indeterminate (change)="$event ? masterToggle() : null"
+          [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()"
+          [aria-label]="checkboxLabel()">
+        </nb-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <nb-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+          [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+        </nb-checkbox>
+      </td>
+    </ng-container>
+  
+    <!-- post_id Column -->
+    <ng-container matColumnDef="doc_id">
+      <th mat-header-cell *matHeaderCellDef> Doc ID </th>
+      <td mat-cell *matCellDef="let element"> {{element._id}} </td>
+    </ng-container>
+    <!-- post_url Column -->
+    <ng-container matColumnDef="post_url">
+      <th mat-header-cell *matHeaderCellDef> Post url </th>
+      <td mat-cell *matCellDef="let element"> <a [href]="element._source.post_url">URL</a></td>
+    </ng-container>
+    <!-- status Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef> Status Edenor </th>
+      <td mat-cell *matCellDef="let element"> {{element._source.status}} </td>
+    </ng-container>    <!-- seller_name Column -->
+    <ng-container matColumnDef="seller_name">
+      <th mat-header-cell *matHeaderCellDef> Seller Name </th>
+      <td mat-cell *matCellDef="let element"> {{element._source.seller_name}} </td>
+    </ng-container>
+    <!-- location_text Column -->
+    <ng-container matColumnDef="location_text">
+      <th mat-header-cell *matHeaderCellDef> Localización </th>
+      <td mat-cell *matCellDef="let element"> {{element._source.location_text | titlecase}} </td>
+    </ng-container>
+    <!-- created_at Column -->
+    <ng-container matColumnDef="created_at">
+      <th mat-header-cell *matHeaderCellDef> Fecha Creación </th>
+      <td mat-cell *matCellDef="let element"> {{element._source.created_at}} </td>
+    </ng-container>
+    <!-- screenshot Column -->
+    <ng-container matColumnDef="screenshot">
+      <th mat-header-cell *matHeaderCellDef> Fecha Update </th>
+      <td mat-cell *matCellDef="let element"> {{element._source.screenshot}} </td>
+    </ng-container>
+    <!-- is_live Column -->
+    <ng-container matColumnDef="is_live">
+      <th mat-header-cell *matHeaderCellDef> Live </th>
+      <td mat-cell *matCellDef="let element"> {{element._source.is_live}} </td>
+    </ng-container>
+    <!-- caption Column -->
+    <ng-container matColumnDef="caption">
+      <th mat-header-cell *matHeaderCellDef> Post Title </th>
+      <td mat-cell *matCellDef="let element"> {{element._source.caption}} </td>
+    </ng-container>
+    <!-- post_id Column -->
+    <ng-container matColumnDef="post_id">
+      <th mat-header-cell *matHeaderCellDef> Post ID </th>
+      <td mat-cell *matCellDef="let element"> {{element._source.post_id}} </td>
+    </ng-container>
+    <!-- seller_id Column -->
+    <ng-container matColumnDef="seller_id">
+      <th mat-header-cell *matHeaderCellDef> Seller ID </th>
+      <td mat-cell *matCellDef="let element"> {{element._source.seller_id}} </td>
+    </ng-container>
+    <!-- area_concesion_edenor Column -->
+    <ng-container matColumnDef="area_concesion_edenor">
+      <th mat-header-cell *matHeaderCellDef> Area </th>
+      <td mat-cell *matCellDef="let element"> {{element._source.area_concesion_edenor}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+    </tr>
+  
+  </table>
+</nb-card-body>
+</nb-card>
+  <mat-paginator [pageSize]="10" showFirstLastButtons></mat-paginator>

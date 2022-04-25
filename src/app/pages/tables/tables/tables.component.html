@@ -1,3 +1,5 @@
+<section  *ngIf="loadData">
+
 <table mat-table matTableExporter #exporter="matTableExporter" [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="loadData">
 
   <!-- Checkbox Column -->
@@ -17,7 +19,7 @@
 
   <!-- post_id Column -->
   <ng-container matColumnDef="post_id">
-    <th mat-header-cell *matHeaderCellDef> DOC ID </th>
+    <th mat-header-cell *matHeaderCellDef> Doc ID </th>
     <td mat-cell *matCellDef="let element"> {{element._source.post_id}} </td>
   </ng-container>
   <!-- post_url Column -->
@@ -54,3 +56,4 @@
   <button nbButton hero status="info" (click)="exporter.exportTable('json', {fileName: 'test'})">Json</button>
   <button nbButton hero status="info" (click)="exporter.exportTable('txt', {fileName: 'test'})">Txt</button>
 </div>
+</section>

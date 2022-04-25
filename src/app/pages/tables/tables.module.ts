@@ -6,10 +6,14 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { NbButtonModule, NbCardModule, NbCheckboxModule } from '@nebular/theme';
 import { MatTableExporterModule } from 'mat-table-exporter';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { PostsComponent } from './posts/posts.component';
+import { GestionComponent } from './gestion/gestion.component';
 
 
 const components = [
-  TablesComponent
+  TablesComponent,
+  PostsComponent,
+  GestionComponent
 ]
 
 @NgModule({

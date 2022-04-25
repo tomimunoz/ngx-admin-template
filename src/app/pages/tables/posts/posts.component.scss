@@ -1,0 +1,41 @@
+table{
+    overflow-x: 'auto'
+}
+
+.mat-elevation-z8 {
+    box-shadow: none;
+}
+
+.button-group {
+    position: sticky;
+    display: flex;
+    gap: .5em;
+    margin-bottom: 1em;
+    button{
+        font-size: .75em;
+    }
+}
+
+.mat-table {
+    overflow-x: scroll;
+  }
+
+.mat-cell,
+.mat-header-cell {
+  word-wrap: initial;
+  display: table-cell;
+  padding: 0px 10px;
+  line-break: unset;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: middle;
+}
+.mat-row,
+.mat-header-row {
+  display: table-row;
+}
+
+mat-paginator {
+    position: sticky !important;
+}
